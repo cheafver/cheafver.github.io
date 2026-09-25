@@ -22,7 +22,7 @@ These are empty (`""`) for now. While empty, they show a "Coming soon" label, or
 | LinkedIn | `contact.linkedinUrl` | Your full profile URL, e.g. `https://www.linkedin.com/in/your-name` |
 | Credly badges | `credlyUrl` under each certification | The badge URL, e.g. `https://www.credly.com/badges/...` |
 | CV (PDF) | `cvUrl` | First upload the PDF to `public/cv/` (Add file, Upload files), then set `/cv/your-file.pdf` |
-| Headshot | `headshot` | First upload a square image to `public/img/`, then set `/img/your-file.webp` |
+| Headshot | `profile.headshot` | Currently a generated **placeholder** (`/img/headshot-placeholder.webp`, captioned "Placeholder photo"). Upload your real square photo (400×400 WebP is ideal) to `public/img/`, then set `/img/your-file.webp` |
 
 Dates always use the format `Mon YYYY`, for example `Aug 2026`.
 
@@ -33,4 +33,4 @@ Dates always use the format `Mon YYYY`, for example `Aug 2026`.
 
 ## Things the build will refuse
 
-To protect you, the build fails if the output contains your plain email address, an Instagram link, or an external link without safe link settings. Your email is assembled in the browser so bots scraping the page can't read it.
+The build fails if `noindex` is `false` while the headshot is still the placeholder, and if `headshot` or `cvUrl` points to a file that isn't in `public/`. It also fails if the output contains your plain email address, an Instagram link, or an external link without safe link settings. Your email is assembled in the browser so bots scraping the page can't read it.

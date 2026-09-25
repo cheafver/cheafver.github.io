@@ -25,8 +25,8 @@
           const r = document.createRange(); r.selectNodeContents(out);
           const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
           const mac = /Mac|iPhone|iPad/.test(navigator.platform);
-          status.textContent = 'Address selected. Press your copy shortcut.';
-          flash(mac ? 'Press ⌘C' : 'Press Ctrl+C', 'Press copy shortcut', 3000);
+          status.textContent = `Email address selected. Press ${mac ? 'Command+C' : 'Ctrl+C'} to copy.`;
+          flash('Selected', 'Email address selected', 3000);
         }
       });
     }

@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import { siteSchema, formatIssues, isPlaceholderSiteUrl, PLACEHOLDER_SITEURL_MESSAGE } from './schema.mjs';
+import { siteSchema, formatIssues, isPlaceholderSiteUrl, PLACEHOLDER_SITEURL_MESSAGE, isPlaceholderHeadshot, PLACEHOLDER_HEADSHOT_MESSAGE } from './schema.mjs';
 
 export const CONTENT_FILE = path.resolve('src/content/site.yaml');
 
@@ -16,6 +16,12 @@ export function loadSite({ gate = true } = {}) {
   const res = siteSchema.safeParse(raw);
   if (!res.success) throw new Error(`site.yaml has ${res.error.issues.length} problem(s):\n  - ${formatIssues(res.error).join('\n  - ')}`);
   const site = res.data;
+  // Files referenced from site.yaml must exist in public/.
+  for (const [key, ref] of [['profile.headshot', site.profile.headshot], ['profile.cvUrl', site.profile.cvUrl]]) {
+    if (ref && ref.startsWith('/') && !fs.existsSync(path.resolve('public' + ref))) throw new Error(`site.yaml ${key} points to ${ref}, but public${ref} does not exist. Upload the file or set it back to "".`);
+  }
+  // M9 rule (Keola): a generated placeholder face must never be public. No bypass.
+  if (!site.settings.noindex && isPlaceholderHeadshot(site.profile.headshot)) throw new Error(PLACEHOLDER_HEADSHOT_MESSAGE);
   if (gate && isPlaceholderSiteUrl(site.settings.siteUrl)) {
     const inCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
     if (process.env.ALLOW_PLACEHOLDER_SITEURL === '1' && !inCI) {

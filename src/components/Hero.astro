@@ -24,7 +24,9 @@ const { profile, linkedinUrl, certifications, hide } = Astro.props;
         <Button href={linkedinUrl} label="LinkedIn" variant="secondary" icon="linkedin" external hide={hide} />
       </div>
     </div>
-    {profile.headshot && <img class="headshot" src={profile.headshot} alt={profile.name} width="200" height="200" loading="eager" />}
+    {profile.headshot && (/placeholder/i.test(profile.headshot)
+      ? <figure class="headshot-fig"><img class="headshot" src={profile.headshot} alt="Placeholder portrait" width="200" height="200" loading="eager" fetchpriority="high" /><figcaption class="headshot-cap">Placeholder photo</figcaption></figure>
+      : <img class="headshot" src={profile.headshot} alt={profile.name} width="200" height="200" loading="eager" fetchpriority="high" />)}
     <ul class="hero-certs" aria-label="Certifications">
       {certifications.map((c) => (
         <li class:list={['hc', { micro: c.kind === 'microcredential' }]}>

@@ -17,8 +17,8 @@ profile:
   headline: Network & Cloud Network Engineer
   tagline: Hybrid and multi-cloud networking across on-prem, AWS, and GCP.
   availability: Open to remote & international roles
-  location: Indonesia (UTC+7)
-  headshot: ""           # PLACEHOLDER: upload to public/img/, then e.g. /img/headshot.webp (hidden while empty)
+  location: Based in Indonesia · Any time zone
+  headshot: "/img/headshot-placeholder.webp"   # PLACEHOLDER photo (generated). Replace with your real photo before setting noindex: false; the build refuses otherwise.
   cvUrl: ""              # PLACEHOLDER: upload to public/cv/, then e.g. /cv/cheaty-frever-cv.pdf
 
 contact:

@@ -9,6 +9,8 @@ const text = (max) => z.string().trim().min(1, 'Must not be empty').max(max, `Ke
 const optionalText = (max) => z.string().max(max, `Keep this to ${max} characters or fewer`).default('');
 const emptyOr = (re, msg) => z.string().refine((v) => v === '' || re.test(v), msg).default('');
 
+export const PLACEHOLDER_HEADSHOT_MESSAGE = 'Replace the placeholder headshot with your real photo before making the site public.';
+export const isPlaceholderHeadshot = (p) => /placeholder/i.test(p || '');
 export const PLACEHOLDER_SITEURL_MESSAGE = 'Set siteUrl in site.yaml to your real GitHub Pages address before deploying.';
 
 const cert = z.object({

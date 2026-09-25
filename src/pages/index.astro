@@ -9,7 +9,6 @@ import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import MobileEmailBar from '../components/MobileEmailBar.astro';
 import { site } from '../lib/site';
 const { settings, profile, contact, certifications, experience, projects, skills } = site;
 const hide = settings.hidePlaceholders;
@@ -26,5 +25,4 @@ const hide = settings.hidePlaceholders;
     <Contact contact={contact} availability={profile.availability} hide={hide} />
   </main>
   <Footer name={profile.name} headline={profile.headline} />
-  <MobileEmailBar />
 </BaseLayout>
