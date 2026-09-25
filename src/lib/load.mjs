@@ -22,6 +22,8 @@ export function loadSite({ gate = true } = {}) {
   }
   // M9 rule (Keola): a generated placeholder face must never be public. No bypass.
   if (!site.settings.noindex && isPlaceholderHeadshot(site.profile.headshot)) throw new Error(PLACEHOLDER_HEADSHOT_MESSAGE);
+  // Same rule for a draft CV: a cvUrl containing "placeholder" or "draft" must never be public.
+  if (!site.settings.noindex && /placeholder|draft/i.test(site.profile.cvUrl || '')) throw new Error('Replace the draft CV with your final PDF before making the site public.');
   if (gate && isPlaceholderSiteUrl(site.settings.siteUrl)) {
     const inCI = !!process.env.CI || !!process.env.GITHUB_ACTIONS;
     if (process.env.ALLOW_PLACEHOLDER_SITEURL === '1' && !inCI) {
