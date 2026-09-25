@@ -1,0 +1,36 @@
+---
+// Contact card (spec 5.13). Outputs only data-u / data-d; the script assembles the address.
+import Icon from './Icon.astro';
+import Pill from './Pill.astro';
+import Button from './Button.astro';
+import ComingSoon from './ComingSoon.astro';
+import { noJsEmail } from '../lib/format';
+import type { Site } from '../lib/site';
+interface Props { contact: Site['contact']; availability: string; hide: boolean }
+const { contact, availability, hide } = Astro.props;
+---
+<section id="contact" class="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <div class="contact-left">
+        <h2 id="h-contact">Contact</h2>
+        {contact.heading && <p class="lead">{contact.heading}</p>}
+        <Pill text={availability} />
+        <Button href="#contact" label="Email me" size="xl" icon="mail" mail />
+      </div>
+      <div>
+        <div class="label-sm" id="email-label">Email</div>
+        <div class="copyrow">
+          <output id="email-text" aria-labelledby="email-label" data-u={contact.emailUser} data-d={contact.emailDomain}><noscript>{noJsEmail(contact.emailUser, contact.emailDomain)}</noscript></output>
+          <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy email address" hidden>
+            <Icon name="copy" /><span class="lbl">Copy</span>
+          </button>
+        </div>
+        <p class="sr-only" id="copy-status" aria-live="polite"></p>
+        {contact.linkedinUrl
+          ? <a class="soc-link" href={contact.linkedinUrl} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" />LinkedIn<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+          : !hide && <span class="soc-link is-soon" aria-disabled="true"><Icon name="linkedin" />LinkedIn <ComingSoon /></span>}
+      </div>
+    </div>
+  </div>
+</section>

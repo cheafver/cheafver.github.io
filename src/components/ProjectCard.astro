@@ -1,0 +1,32 @@
+---
+// One project: title, badges, Problem/Role/Outcome, tags, optional generic diagram (spec 5.8, 5.9, 5.11).
+import Icon from './Icon.astro';
+import Tags from './Tags.astro';
+import type { Project } from '../lib/site';
+import topoDesktop from '../assets/topology-desktop.svg?raw';
+import topoMobile from '../assets/topology-mobile.svg?raw';
+interface Props { project: Project }
+const { project: p } = Astro.props;
+const topo = topoDesktop.replace(/<svg /, '<svg class="topo topo-d" ') + topoMobile.replace(/<svg /, '<svg class="topo topo-m" ');
+---
+<article class:list={['proj', p.diagram ? 'has-diagram' : 'wide']}>
+  <div class="content">
+    <div class="titlerow">
+      <h3>{p.title}</h3>
+      {p.nda && <span class="badge"><Icon name="lock" />Details under NDA</span>}
+      {p.privateCode && <span class="badge"><Icon name="code" />Private code, described only</span>}
+    </div>
+    <dl>
+      <div><dt>Problem</dt><dd>{p.problem}</dd></div>
+      <div><dt>Role</dt><dd>{p.role}</dd></div>
+      <div><dt>Outcome</dt><dd>{p.outcome}</dd></div>
+    </dl>
+    <Tags items={p.tags} />
+  </div>
+  {p.diagram && (
+    <figure>
+      <Fragment set:html={topo} />
+      <figcaption>illustrative, not actual architecture</figcaption>
+    </figure>
+  )}
+</article>

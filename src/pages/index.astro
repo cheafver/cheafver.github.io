@@ -1,0 +1,30 @@
+---
+// The one page. Composes the section components in fixed order. All copy comes from site.yaml.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Certifications from '../components/Certifications.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import MobileEmailBar from '../components/MobileEmailBar.astro';
+import { site } from '../lib/site';
+const { settings, profile, contact, certifications, experience, projects, skills } = site;
+const hide = settings.hidePlaceholders;
+---
+<BaseLayout settings={settings} profile={profile}>
+  <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
+  <Header name={profile.name} />
+  <main id="main" tabindex="-1">
+    <Hero profile={profile} linkedinUrl={contact.linkedinUrl} certifications={certifications} hide={hide} />
+    <Certifications certifications={certifications} hide={hide} />
+    <Experience experience={experience} />
+    <Projects projects={projects} />
+    <Skills skills={skills} />
+    <Contact contact={contact} availability={profile.availability} hide={hide} />
+  </main>
+  <Footer name={profile.name} headline={profile.headline} />
+  <MobileEmailBar />
+</BaseLayout>

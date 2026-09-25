@@ -1,0 +1,39 @@
+---
+// Hero: name, headline, tagline, pill, location, CTAs, optional headshot, cert badges (spec 5.2).
+import Icon from './Icon.astro';
+import Pill from './Pill.astro';
+import Button from './Button.astro';
+import { issuerCode } from '../lib/format';
+import type { Site } from '../lib/site';
+interface Props { profile: Site['profile']; linkedinUrl: string; certifications: Site['certifications']; hide: boolean }
+const { profile, linkedinUrl, certifications, hide } = Astro.props;
+---
+<section id="hero" class:list={['hero', { 'has-photo': !!profile.headshot }]} aria-labelledby="hero-name">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-name">{profile.name}</h1>
+      <p class="headline">{profile.headline}</p>
+      <p class="tagline">{profile.tagline}</p>
+      <div class="meta-row">
+        <Pill text={profile.availability} />
+        {profile.location && <p class="location"><Icon name="globe" />{profile.location}</p>}
+      </div>
+      <div class="ctas">
+        <Button href="#contact" label="Email me" icon="mail" mail />
+        <Button href={profile.cvUrl} label="Download CV" variant="secondary" icon="download" download hide={hide} />
+        <Button href={linkedinUrl} label="LinkedIn" variant="secondary" icon="linkedin" external hide={hide} />
+      </div>
+    </div>
+    {profile.headshot && <img class="headshot" src={profile.headshot} alt={profile.name} width="200" height="200" loading="eager" />}
+    <ul class="hero-certs" aria-label="Certifications">
+      {certifications.map((c) => (
+        <li class:list={['hc', { micro: c.kind === 'microcredential' }]}>
+          <a href="#certifications">
+            <span class="code" aria-hidden="true">{issuerCode(c.issuer)}</span>
+            <span class="t">{c.name}<small>{c.kind === 'microcredential' ? 'Microcredential · ' : ''}Issued {c.issued}</small></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

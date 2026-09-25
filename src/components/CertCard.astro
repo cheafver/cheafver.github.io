@@ -1,0 +1,24 @@
+---
+// One certification or microcredential card (spec 5.5, 5.6).
+import ComingSoon from './ComingSoon.astro';
+import { issuerCode } from '../lib/format';
+import type { Cert } from '../lib/site';
+interface Props { cert: Cert; hide: boolean }
+const { cert: c, hide } = Astro.props;
+const micro = c.kind === 'microcredential';
+---
+<li class:list={['cert', { micro }]}>
+  <div class="top">
+    <span class="code" aria-hidden="true">{issuerCode(c.issuer)}</span>
+    <span class="kind">{micro ? 'Microcredential' : 'Certification'}</span>
+  </div>
+  <h3>{c.name}</h3>
+  <p class="issuer">{c.issuer}</p>
+  <dl class="dates">
+    <div><dt>Issued</dt><dd>{c.issued}</dd></div>
+    <div><dt>Expires</dt><dd>{c.expires}</dd></div>
+  </dl>
+  {c.credlyUrl
+    ? <div class="foot"><a class="verify" href={c.credlyUrl} target="_blank" rel="noopener noreferrer">Verify on Credly <span aria-hidden="true">↗</span><span class="sr-only"> (opens in new tab)</span></a></div>
+    : !hide && <div class="foot"><span class="verify" aria-disabled="true">Verify on Credly <ComingSoon /></span></div>}
+</li>

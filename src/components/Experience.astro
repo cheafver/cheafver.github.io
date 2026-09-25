@@ -1,0 +1,33 @@
+---
+// Experience: employer card with tracks (spec 5.7). Icons are decorative.
+import Icon from './Icon.astro';
+import type { Site } from '../lib/site';
+interface Props { experience: Site['experience'] }
+const { experience } = Astro.props;
+---
+<section id="experience" aria-labelledby="h-exp">
+  <div class="wrap">
+    <div class="sh"><h2 id="h-exp">Experience</h2></div>
+    {experience.map((e) => (
+      <article class="employer">
+        <div class="emp-head">
+          <div class="l">
+            <span class="emp-logo"><Icon name="bank" /></span>
+            <div><h3>{e.role}</h3><p class="org">{e.employer}</p></div>
+          </div>
+          <span class="period">{e.period}</span>
+        </div>
+        {e.tracks.length > 0 && (
+          <ul class="tracks">
+            {e.tracks.map((t, i) => (
+              <li class="track">
+                <span class="ico"><Icon name={i === 0 ? 'server' : 'cloud'} /></span>
+                <div><h4>{t.title}</h4><p>{t.period}</p></div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,105 @@
+# ============================================================
+#  Cheaty Frever portfolio: THE ONLY FILE YOU NEED TO EDIT
+#  Edit on GitHub, commit to main, and the site redeploys.
+#  Anything set to "" (empty) shows as "coming soon" on the site.
+# ============================================================
+
+settings:
+  # Keep true while placeholders remain, so search engines skip the draft.
+  noindex: true
+  siteUrl: https://cheafver.github.io   # your site address, no trailing slash; canonical and og:image are built from this
+  lang: en
+  # Leave false during colleague review. At launch, true hides any link that is still "" instead of showing "coming soon".
+  hidePlaceholders: false
+
+profile:
+  name: Cheaty Frever
+  headline: Network & Cloud Network Engineer
+  tagline: Hybrid and multi-cloud networking across on-prem, AWS, and GCP.
+  availability: Open to remote & international roles
+  location: Indonesia (UTC+7)
+  headshot: ""           # PLACEHOLDER: upload to public/img/, then e.g. /img/headshot.webp (hidden while empty)
+  cvUrl: ""              # PLACEHOLDER: upload to public/cv/, then e.g. /cv/cheaty-frever-cv.pdf
+
+contact:
+  # Stored split so the full address never appears as plain text in the HTML.
+  emailUser: cheatyfrever
+  emailDomain: gmail.com
+  linkedinUrl: ""        # PLACEHOLDER: e.g. https://www.linkedin.com/in/your-name
+  # Optional line above the contact buttons; leave "" to show just "Contact".
+  heading: "Hiring for cloud networking? Let's talk."
+
+certifications:
+  - name: AWS Certified Advanced Networking – Specialty
+    issuer: Amazon Web Services
+    issued: Aug 2026
+    expires: Aug 2029
+    kind: certification
+    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+  - name: AWS Application Networking – Demonstrated
+    issuer: Amazon Web Services
+    issued: Aug 2026
+    expires: Aug 2027
+    kind: microcredential   # hands-on microcredential, styled distinctly
+    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+  - name: AWS Certified Solutions Architect – Associate
+    issuer: Amazon Web Services
+    issued: Feb 2026
+    expires: Feb 2029
+    kind: certification
+    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+  - name: Cisco Certified Network Associate (CCNA)
+    issuer: Cisco
+    issued: May 2024
+    expires: May 2027
+    kind: certification
+    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+
+experience:
+  - role: Network & Cloud Network Engineer
+    employer: A top-tier Indonesian bank
+    period: 2022 to present
+    tracks:
+      - title: Network engineering (on-prem)
+        period: 2022 to present
+      - title: Cloud network architecture and engineering (AWS, GCP)
+        period: In parallel since 2025
+
+projects:
+  - title: Hybrid multi-cloud banking network
+    nda: true            # shows the "Details under NDA" badge
+    problem: >-
+      Mobile and corporate banking workloads needed to run active-active across
+      on-prem data centers, AWS, and GCP.
+    role: >-
+      Designed and implemented the AWS network, and implemented the GCP network:
+      Direct Connect / Interconnect, VPCs, DNS, load balancers, intra- and
+      inter-VPC traffic flows, and ingress/egress flows.
+    outcome: >-
+      A flexible environment where workloads scale up and down on cloud, and dev
+      environments can be provisioned and scaled as needed.
+    tags: [AWS, GCP, Direct Connect, Interconnect, VPC, DNS, Load balancers, Hybrid cloud]
+    diagram: true        # generic topology, labelled "illustrative, not actual architecture"
+  - title: Network observability pipeline (internal tool)
+    nda: false
+    privateCode: true    # shows "Private code, described only"
+    problem: >-
+      The on-prem network needed clear, consistent health signals from ping data
+      and raw SolarWinds data.
+    role: >-
+      Built a Python pipeline that ingests ping data and raw SolarWinds
+      (SQL Server) data into a database and computes the four golden signals:
+      latency, traffic, errors, and saturation.
+    outcome: >-
+      Results are shown in Grafana dashboards with alerting, covering the
+      on-prem network.
+    tags: [Python, SolarWinds, SQL Server, Grafana, Alerting, Golden signals]
+
+# Skills are drawn only from the confirmed projects and certs above.
+skills:
+  - group: Cloud networking
+    items: [AWS, GCP, Direct Connect, Interconnect, VPC, DNS, Load balancers]
+  - group: Network engineering
+    items: [On-prem data center networking, Cisco (CCNA), Ingress/egress traffic flows]
+  - group: Automation & observability
+    items: [Python, SQL Server, SolarWinds, Grafana, Alerting]
