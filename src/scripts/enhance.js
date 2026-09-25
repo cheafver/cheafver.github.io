@@ -7,7 +7,10 @@
     const out = document.getElementById('email-text');
     const btn = document.getElementById('copy-btn');
     if (out && btn) {
-      out.textContent = addr;
+      // Line break allowed only after the @ (used at 360px and below).
+      const t = document.createElement('span');
+      t.append(`${src.dataset.u}@`, document.createElement('wbr'), src.dataset.d);
+      out.replaceChildren(t);
       const lbl = btn.querySelector('.lbl'), status = document.getElementById('copy-status');
       btn.hidden = false;
       let busy = false;

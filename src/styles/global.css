@@ -64,7 +64,7 @@ h1{font-size:68px;font-weight:750;letter-spacing:-.035em;line-height:1.02}
 .headshot{width:200px;height:200px;border-radius:50%;object-fit:cover;justify-self:end}
 .headshot-fig{justify-self:end;align-self:center;display:grid;justify-items:center;gap:10px;margin:0}
 .headshot-fig .headshot{outline:1px dashed var(--line-3);outline-offset:4px}
-.headshot-cap{font:600 10.5px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--bg-soft);border:1px dashed var(--line-3);border-radius:6px;padding:3px 8px}
+.headshot-cap{font:600 10.5px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--bg-soft);border:1px dashed var(--line-3);border-radius:6px;padding:3px 8px;margin-top:0}
 .hero-cert-line{display:flex;align-items:center;gap:8px;margin:14px 0 0;font:500 13.5px/1.4 var(--mono);color:var(--ink-2)}
 .hero-cert-line svg{flex:none;color:var(--accent)}
 @media (min-width:360px){.hero-cert-line .ci{white-space:nowrap}}
@@ -210,7 +210,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;font-size:13px;
   .contact-card{grid-template-columns:1fr;padding:28px 20px;gap:28px}
   .contact h2{font-size:30px}
   .btn-xl{width:100%}
-  .copyrow output{font-size:14px;padding:0 12px}
+  .copyrow output{font-size:13px;padding:0 10px;white-space:nowrap;overflow-wrap:normal}
   footer .wrap{flex-direction:column;gap:6px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
@@ -222,3 +222,5 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;font-size:13px;
 .nf-ctas{margin-top:28px}
 @media (max-width:767.98px){.nf h1{font-size:28px}.nf-ctas .btn{flex:1 1 100%}}
 @media (min-width:1024px){.nav-actions{display:none}}
+.copyrow wbr{display:none}
+@media (max-width:374.98px){.copyrow output{white-space:normal}.copyrow wbr{display:inline}}
