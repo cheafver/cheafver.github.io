@@ -18,7 +18,7 @@ const featured = certifications.filter((c) => c.featured).map((c) => c.short ?? 
         <Pill text={profile.availability} />
         {profile.location && <p class="location"><Icon name="globe" />{profile.location}</p>}
       </div>
-      {featured.length > 0 && <p class="hero-cert-line"><Icon name="badge" /><span><span class="sr-only">Certifications: </span>{featured.join(' · ')}</span></p>}
+      {featured.length > 0 && <p class="hero-cert-line"><Icon name="badge" /><span><span class="sr-only">Certifications: </span>{featured.map((n, i) => <>{i > 0 && ' · '}<span class="ci">{n}</span></>)}</span></p>}
       <div class="ctas">
         <Button href="#contact" label="Email me" icon="mail" mail />
         <Button href={profile.cvUrl} label="Download CV" variant="secondary" icon="download" download hide={hide} />
