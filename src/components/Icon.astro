@@ -1,6 +1,6 @@
 ---
 // Decorative inline SVG icons. Always aria-hidden and not focusable.
-export type IconName = 'mail' | 'download' | 'linkedin' | 'menu' | 'close' | 'bank' | 'server' | 'cloud' | 'lock' | 'code' | 'copy' | 'globe' | 'brand';
+export type IconName = 'mail' | 'download' | 'linkedin' | 'menu' | 'close' | 'bank' | 'server' | 'cloud' | 'lock' | 'code' | 'copy' | 'check' | 'globe' | 'brand';
 interface Props { name: IconName; size?: number; class?: string }
 const { name, size, class: cls } = Astro.props;
 const st = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
@@ -16,6 +16,7 @@ const paths: Record<IconName, [number, string, string?]> = {
   lock: [13, `<g ${st}><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g>`],
   code: [13, `<path ${st} d="m8 7-5 5 5 5M16 7l5 5-5 5"/>`],
   copy: [16, `<g ${st}><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/></g>`],
+  check: [16, `<path ${st} d="M5 12.5 10 17 19 7"/>`],
   globe: [14, `<g ${st}><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></g>`],
   brand: [26, `<rect width="64" height="64" rx="14" fill="#1d5fe0"/><path d="M22 42 L32 22 L42 42" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/><g fill="#fff"><circle cx="32" cy="21" r="6"/><circle cx="21" cy="43" r="6"/><circle cx="43" cy="43" r="6"/></g>`, '0 0 64 64'],
 };

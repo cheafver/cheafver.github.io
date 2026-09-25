@@ -14,7 +14,7 @@ const { contact, availability, hide } = Astro.props;
     <div class="contact-card">
       <div class="contact-left">
         <h2 id="h-contact">Contact</h2>
-        {contact.heading && <p class="lead">{contact.heading}</p>}
+        {contact.heading && <p class="contact-lead">{contact.heading}</p>}
         <Pill text={availability} />
         <Button href="#contact" label="Email me" size="xl" icon="mail" mail />
       </div>
@@ -23,7 +23,7 @@ const { contact, availability, hide } = Astro.props;
         <div class="copyrow">
           <output id="email-text" aria-labelledby="email-label" data-u={contact.emailUser} data-d={contact.emailDomain}><noscript>{noJsEmail(contact.emailUser, contact.emailDomain)}</noscript></output>
           <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy email address" hidden>
-            <Icon name="copy" /><span class="lbl">Copy</span>
+            <Icon name="copy" class="ic-copy" /><Icon name="check" class="ic-check" /><span class="lbl">Copy</span>
           </button>
         </div>
         <p class="sr-only" id="copy-status" aria-live="polite"></p>

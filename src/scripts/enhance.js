@@ -11,16 +11,16 @@
       const lbl = btn.querySelector('.lbl'), status = document.getElementById('copy-status');
       btn.hidden = false;
       let busy = false;
-      const flash = (text, aria, ms) => {
-        busy = true; lbl.textContent = text; btn.setAttribute('aria-label', aria);
-        setTimeout(() => { lbl.textContent = 'Copy'; btn.setAttribute('aria-label', 'Copy email address'); status.textContent = ''; busy = false; }, ms);
+      const flash = (text, aria, ms, done) => {
+        busy = true; lbl.textContent = text; btn.classList.toggle('is-done', !!done); btn.setAttribute('aria-label', aria);
+        setTimeout(() => { btn.classList.remove('is-done'); lbl.textContent = 'Copy'; btn.setAttribute('aria-label', 'Copy email address'); status.textContent = ''; busy = false; }, ms);
       };
       btn.addEventListener('click', async () => {
         if (busy) return;
         try {
           await navigator.clipboard.writeText(addr);
           status.textContent = 'Email address copied';
-          flash('Copied', 'Email address copied', 2000);
+          flash('Copied', 'Email address copied', 2000, true);
         } catch {
           const r = document.createRange(); r.selectNodeContents(out);
           const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
