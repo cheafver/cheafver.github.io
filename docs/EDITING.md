@@ -21,6 +21,7 @@ These are empty (`""`) for now. While empty, they show a "Coming soon" label, or
 | --- | --- | --- |
 | LinkedIn | `contact.linkedinUrl` | Your full profile URL, e.g. `https://www.linkedin.com/in/your-name` |
 | Credly badges | `credlyUrl` under each certification | The badge URL, e.g. `https://www.credly.com/badges/...` |
+| Hero certifications line | `featured: true` and optional `short` under each certification | Featured certs appear in one line under your name, using `short` if set (otherwise the full name). Remove `featured` from all of them to hide the line. |
 | CV (PDF) | `cvUrl` | First upload the PDF to `public/cv/` (Add file, Upload files), then set `/cv/your-file.pdf` |
 | Headshot | `profile.headshot` | Currently a generated **placeholder** (`/img/headshot-placeholder.webp`, captioned "Placeholder photo"). Upload your real square photo (400×400 WebP is ideal) to `public/img/`, then set `/img/your-file.webp` |
 

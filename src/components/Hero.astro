@@ -1,12 +1,12 @@
 ---
-// Hero: name, headline, tagline, pill, location, CTAs, optional headshot, cert badges (spec 5.2).
+// Hero: name, headline, tagline, pill, location, CTAs, optional headshot, featured-cert line (spec 5.2, v1.4).
 import Icon from './Icon.astro';
 import Pill from './Pill.astro';
 import Button from './Button.astro';
-import { issuerCode } from '../lib/format';
 import type { Site } from '../lib/site';
 interface Props { profile: Site['profile']; linkedinUrl: string; certifications: Site['certifications']; hide: boolean }
 const { profile, linkedinUrl, certifications, hide } = Astro.props;
+const featured = certifications.filter((c) => c.featured).map((c) => c.short ?? c.name);
 ---
 <section id="hero" class:list={['hero', { 'has-photo': !!profile.headshot }]} aria-labelledby="hero-name">
   <div class="wrap">
@@ -18,6 +18,7 @@ const { profile, linkedinUrl, certifications, hide } = Astro.props;
         <Pill text={profile.availability} />
         {profile.location && <p class="location"><Icon name="globe" />{profile.location}</p>}
       </div>
+      {featured.length > 0 && <p class="hero-cert-line"><Icon name="badge" /><span><span class="sr-only">Certifications: </span>{featured.join(' · ')}</span></p>}
       <div class="ctas">
         <Button href="#contact" label="Email me" icon="mail" mail />
         <Button href={profile.cvUrl} label="Download CV" variant="secondary" icon="download" download hide={hide} />
@@ -27,15 +28,5 @@ const { profile, linkedinUrl, certifications, hide } = Astro.props;
     {profile.headshot && (/placeholder/i.test(profile.headshot)
       ? <figure class="headshot-fig"><img class="headshot" src={profile.headshot} alt="Placeholder portrait" width="200" height="200" loading="eager" fetchpriority="high" /><figcaption class="headshot-cap">Placeholder photo</figcaption></figure>
       : <img class="headshot" src={profile.headshot} alt={profile.name} width="200" height="200" loading="eager" fetchpriority="high" />)}
-    <ul class="hero-certs" aria-label="Certifications">
-      {certifications.map((c) => (
-        <li class:list={['hc', { micro: c.kind === 'microcredential' }]}>
-          <a href="#certifications">
-            <span class="code" aria-hidden="true">{issuerCode(c.issuer)}</span>
-            <span class="t">{c.name}<small>{c.kind === 'microcredential' ? 'Microcredential · ' : ''}Issued {c.issued}</small></span>
-          </a>
-        </li>
-      ))}
-    </ul>
   </div>
 </section>

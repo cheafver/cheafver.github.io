@@ -31,6 +31,8 @@ contact:
 
 certifications:
   - name: AWS Certified Advanced Networking – Specialty
+    short: AWS Advanced Networking      # optional shorter name for the hero line
+    featured: true       # show in the hero certifications line
     issuer: Amazon Web Services
     issued: Aug 2026
     expires: Aug 2029
@@ -43,12 +45,16 @@ certifications:
     kind: microcredential   # hands-on microcredential, styled distinctly
     credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
   - name: AWS Certified Solutions Architect – Associate
+    short: AWS Solutions Architect Associate      # optional shorter name for the hero line
+    featured: true       # show in the hero certifications line
     issuer: Amazon Web Services
     issued: Feb 2026
     expires: Feb 2029
     kind: certification
     credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
   - name: Cisco Certified Network Associate (CCNA)
+    short: CCNA      # optional shorter name for the hero line
+    featured: true       # show in the hero certifications line
     issuer: Cisco
     issued: May 2024
     expires: May 2027

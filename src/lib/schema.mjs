@@ -19,6 +19,8 @@ const cert = z.object({
   issued: monYear,
   expires: monYear,
   kind: z.enum(['certification', 'microcredential']),
+  featured: z.boolean().optional(),
+  short: text(40).optional(),
   credlyUrl: emptyOr(/^https:\/\/www\.credly\.com\/\S+$/, 'Use "" or a link starting with https://www.credly.com/'),
 }).strict().refine((c) => monthIndex(c.expires) >= monthIndex(c.issued), { message: 'expires must not be earlier than issued', path: ['expires'] });
 
