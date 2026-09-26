@@ -68,7 +68,7 @@ h1{font-size:68px;font-weight:750;letter-spacing:-.035em;line-height:1.02}
 .hero-cert-line{display:flex;align-items:center;gap:8px;margin:14px 0 0;font:500 13.5px/1.4 var(--mono);color:var(--ink-2)}
 .hero-cert-line svg{flex:none;color:var(--accent)}
 .hero-cert-line .ci{display:inline-block}
-@media (max-width:359.98px){.hero-cert-line{font-size:12.5px}}
+@media (max-width:359.98px){.hero-cert-line{font-size:12.5px}.hero-cert-line .ci{display:block}.hero-cert-line .sep{display:none}}
 .code{flex:none;width:40px;height:40px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font:700 10.5px/1 var(--mono)}
 .cert.micro{border-style:dashed;border-color:var(--line-2);background:var(--bg-soft)}
 .cert.micro .code{background:var(--bg);border:1px dashed var(--line-3);color:var(--muted)}
