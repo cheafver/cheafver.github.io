@@ -52,7 +52,7 @@ export const siteSchema = z.object({
     availability: text(60),
     location: optionalText(40),
     headshot: emptyOr(/^\/img\/[\w.-]+\.(webp|avif|jpg|png)$/, 'Use "" or a path like /img/headshot.webp (file in public/img/)'),
-    cvUrl: emptyOr(/^\/cv\/[\w.-]+\.pdf$/, 'Use "" or a path like /cv/cheaty-frever-cv.pdf (file in public/cv/)'),
+    cvUrl: emptyOr(/^\/cv\/[\w.-]+\.pdf$/, 'Use "" or a path like /cv/ajo-wijaja-cv.pdf (file in public/cv/)'),
   }).strict(),
   contact: z.object({
     emailUser: z.string().regex(/^[A-Za-z0-9._+-]+$/, 'Only letters, digits, . _ + - are allowed before the @'),

@@ -1,5 +1,5 @@
 # ============================================================
-#  Cheaty Frever portfolio: THE ONLY FILE YOU NEED TO EDIT
+#  Ajo Wijaja portfolio: THE ONLY FILE YOU NEED TO EDIT
 #  Edit on GitHub, commit to main, and the site redeploys.
 #  Anything set to "" (empty) shows as "coming soon" on the site.
 # ============================================================
@@ -13,17 +13,17 @@ settings:
   hidePlaceholders: false
 
 profile:
-  name: Cheaty Frever
+  name: Ajo Wijaja
   headline: Network & Cloud Network Engineer
   tagline: Hybrid and multi-cloud networking across on-prem, AWS, and GCP.
   availability: Open to remote & international roles
   location: Based in Indonesia · Any time zone
   headshot: "/img/headshot-placeholder.webp"   # PLACEHOLDER photo (generated). Replace with your real photo before setting noindex: false; the build refuses otherwise.
-  cvUrl: "/cv/cv-draft.pdf"   # DRAFT CV (placeholders visible). Swap to /cv/cheaty-frever-cv.pdf before noindex: false; the build refuses a draft otherwise.
+  cvUrl: "/cv/cv-draft.pdf"   # DRAFT CV (placeholders visible). Swap to /cv/ajo-wijaja-cv.pdf before noindex: false; the build refuses a draft otherwise.
 
 contact:
   # Stored split so the full address never appears as plain text in the HTML.
-  emailUser: cheatyfrever
+  emailUser: ajowijaja
   emailDomain: gmail.com
   linkedinUrl: ""        # PLACEHOLDER: e.g. https://www.linkedin.com/in/your-name
   # Optional line above the contact buttons; leave "" to show just "Contact".

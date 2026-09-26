@@ -1,6 +1,6 @@
 # cheafver.github.io
 
-Portfolio site for Cheaty Frever, Network & Cloud Network Engineer.
+Portfolio site for Ajo Wijaja, Network & Cloud Network Engineer.
 
 Live at https://cheafver.github.io
 

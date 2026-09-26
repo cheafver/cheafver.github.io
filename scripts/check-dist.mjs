@@ -17,7 +17,7 @@ const text = files.filter((f) => /\.(html|css|js|xml|txt|json|svg)$/.test(f));
 for (const f of text) {
   const s = fs.readFileSync(f, 'utf8');
   const rel = path.relative(dist, f);
-  if (/cheatyfrever@/i.test(s)) problems.push(`${rel}: contains the plain email address`);
+  if (/ajowijaja@/i.test(s)) problems.push(`${rel}: contains the plain email address`);
   if (/Instagram/i.test(s)) problems.push(`${rel}: mentions Instagram`);
   if (/Junior Manager/i.test(s)) problems.push(`${rel}: contains the HR grade`);
   if (/href=["']#?["']/.test(s)) problems.push(`${rel}: has an empty or "#" link`);
