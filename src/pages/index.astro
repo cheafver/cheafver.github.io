@@ -15,13 +15,13 @@ const hide = settings.hidePlaceholders;
 ---
 <BaseLayout settings={settings} profile={profile}>
   <a class="skip-link btn btn-primary" href="#main">Skip to content</a>
-  <Header name={profile.name} />
+  <Header name={profile.name} skills={skills.length > 0} />
   <main id="main" tabindex="-1">
     <Hero profile={profile} linkedinUrl={contact.linkedinUrl} certifications={certifications} hide={hide} />
     <Certifications certifications={certifications} hide={hide} />
     <Experience experience={experience} />
     <Projects projects={projects} />
-    <Skills skills={skills} />
+    {skills.length > 0 && <Skills skills={skills} />}
     <Contact contact={contact} availability={profile.availability} hide={hide} />
   </main>
   <Footer name={profile.name} headline={profile.headline} />

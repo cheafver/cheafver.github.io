@@ -1,5 +1,5 @@
 # ============================================================
-#  Ajo Wijaja portfolio: THE ONLY FILE YOU NEED TO EDIT
+#  Ferian Bagaskara portfolio: THE ONLY FILE YOU NEED TO EDIT
 #  Edit on GitHub, commit to main, and the site redeploys.
 #  Anything set to "" (empty) shows as "coming soon" on the site.
 # ============================================================
@@ -13,19 +13,19 @@ settings:
   hidePlaceholders: false
 
 profile:
-  name: Ajo Wijaja
+  name: Ferian Bagaskara
   headline: Network & Cloud Network Engineer
   tagline: Hybrid and multi-cloud networking across on-prem, AWS, and GCP.
   availability: Open to remote & international roles
   location: Based in Indonesia · Any time zone
-  headshot: "/img/headshot-placeholder.webp"   # PLACEHOLDER photo (generated). Replace with your real photo before setting noindex: false; the build refuses otherwise.
-  cvUrl: "/cv/cv-draft.pdf"   # DRAFT CV (placeholders visible). Swap to /cv/ajo-wijaja-cv.pdf before noindex: false; the build refuses a draft otherwise.
+  headshot: ""   # optional: "" shows no photo. Or a path like /img/headshot.webp (file in public/img/)
+  cvUrl: "/cv/cv-draft.pdf"   # DRAFT CV (placeholders visible). Swap to /cv/ferian-bagaskara-cv.pdf before noindex: false; the build refuses a draft otherwise.
 
 contact:
   # Stored split so the full address never appears as plain text in the HTML.
-  emailUser: ajowijaja
+  emailUser: ferianbagaskara
   emailDomain: gmail.com
-  linkedinUrl: ""        # PLACEHOLDER: e.g. https://www.linkedin.com/in/your-name
+  linkedinUrl: "https://www.linkedin.com/in/ferianbagaskara/"
   # Optional line above the contact buttons; leave "" to show just "Contact".
   heading: "Hiring for cloud networking? Let's talk."
 
@@ -37,13 +37,13 @@ certifications:
     issued: Aug 2026
     expires: Aug 2029
     kind: certification
-    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+    credlyUrl: "https://www.credly.com/badges/607fe779-6e4a-497d-b19f-d58e037cdae0/public_url"
   - name: AWS Application Networking – Demonstrated
     issuer: Amazon Web Services
     issued: Aug 2026
     expires: Aug 2027
     kind: microcredential   # hands-on microcredential, styled distinctly
-    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+    credlyUrl: "https://www.credly.com/badges/330e1144-c92f-4f96-ab3d-862a4953e6a6/public_url"
   - name: AWS Certified Solutions Architect – Associate
     short: AWS Solutions Architect Associate      # optional shorter name for the hero line
     featured: true       # show in the hero certifications line
@@ -51,7 +51,7 @@ certifications:
     issued: Feb 2026
     expires: Feb 2029
     kind: certification
-    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+    credlyUrl: "https://www.credly.com/badges/80214bb3-e168-43c2-928d-c05558948871/public_url"
   - name: Cisco Certified Network Associate (CCNA)
     short: CCNA      # optional shorter name for the hero line
     featured: true       # show in the hero certifications line
@@ -59,7 +59,7 @@ certifications:
     issued: May 2024
     expires: May 2027
     kind: certification
-    credlyUrl: ""        # PLACEHOLDER: https://www.credly.com/badges/...
+    credlyUrl: "https://www.credly.com/badges/2eb13b9d-2e2c-4de3-9850-d775ed45384e/public_url"
 
 experience:
   - role: Network & Cloud Network Engineer
@@ -69,7 +69,7 @@ experience:
       - title: Network engineering (on-prem)
         period: 2022 to present
       - title: Cloud network architecture and engineering (AWS, GCP)
-        period: In parallel since 2025
+        period: 2025–present
 
 projects:
   - title: Hybrid multi-cloud banking network
@@ -101,11 +101,4 @@ projects:
       on-prem network.
     tags: [Python, SolarWinds, SQL Server, Grafana, Alerting, Golden signals]
 
-# Skills are drawn only from the confirmed projects and certs above.
-skills:
-  - group: Cloud networking
-    items: [AWS, GCP, Direct Connect, Interconnect, VPC, DNS, Load balancers]
-  - group: Network engineering
-    items: [On-prem data center networking, Cisco (CCNA), Ingress/egress traffic flows]
-  - group: Automation & observability
-    items: [Python, SQL Server, SolarWinds, Grafana, Alerting]
+# Optional: add a "skills:" list here to show a Skills section (groups with items).
