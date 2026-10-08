@@ -2,6 +2,7 @@
 // <html> and <head>: meta, robots, canonical, Open Graph, icons, self-hosted fonts (spec 7, 1.2).
 import '../styles/tokens.css';
 import '../styles/global.css';
+import '../styles/glass.css';
 import interUrl from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import monoUrl from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
 import enhance from '../scripts/enhance.js?raw';
@@ -23,7 +24,7 @@ const fontCss = `@font-face{font-family:"Inter Variable";font-style:normal;font-
     <title>{title}</title>
     <meta name="description" content={profile.tagline} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#F2F4F8" />
     <link rel="preload" href={interUrl} as="font" type="font/woff2" crossorigin />
     <style is:inline set:html={fontCss} />
     {!forceNoindex && <link rel="canonical" href={canonical} />}

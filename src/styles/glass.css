@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Astrion v1.5: glassmorphism (calm, v2 mockup), production override layer
+   Target: site/src/styles/glass.css, imported in BaseLayout.astro AFTER
+   global.css. It relies on load order: it overrides tokens.css and global.css
+   at equal specificity, so it must load last.
+   Background = pure CSS radial-gradient + linear-gradient layers on <body>.
+   No image files, no data: URIs, no extra assets, no animation (Keola).
+   ========================================================================== */
+
+/* ---- 1. tokens (override tokens.css) ---------------------------------- */
+:root{
+  --base:#F2F4F8;
+  --ink:#1F2937; --ink-2:#374151; --muted:#4B5563;
+  --edge:#606C82;                       /* card + control edge, >=3:1 worst case */
+  --hairline:rgba(31,41,55,.14);        /* decorative inner dividers only */
+  --accent:#1d5fe0; --accent-hover:#164bb5; --accent-active:#123d94;
+  --accent-text:#1a54c8;                /* accent used as small text */
+  --ok-ink:#11643a; --ok-dot:#16a34a;
+  --glass-bg:linear-gradient(145deg,rgba(255,255,255,.66),rgba(255,255,255,.42));     /* blurred cards */
+  --glass-strong:linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,255,255,.58)); /* large, no blur */
+  --glass-hi:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55);
+  --glass-shadow:0 10px 28px -14px rgba(30,50,90,.14),0 2px 6px -3px rgba(30,50,90,.06);
+  --glass-blur:blur(14px) saturate(140%);
+  --ctl-bg:rgba(255,255,255,.72);
+  --head-bg:rgba(248,250,253,.95);
+}
+
+/* ---- 2. page background: 3 slate-blue blobs + faint grid (CSS only) --- */
+html{background:var(--base);scroll-padding-top:84px}
+body{
+  min-height:100vh;
+  background-color:var(--base);
+  background-image:
+    linear-gradient(rgba(51,65,85,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(51,65,85,.045) 1px,transparent 1px),
+    radial-gradient(620px 480px at 86% 4%,rgba(110,140,196,.20),transparent 70%),
+    radial-gradient(640px 460px at 18% 26%,rgba(110,140,196,.16),transparent 70%),
+    radial-gradient(680px 480px at 78% 84%,rgba(110,140,196,.16),transparent 70%);
+  background-size:32px 32px,32px 32px,auto,auto,auto;
+  background-repeat:repeat,repeat,no-repeat,no-repeat,no-repeat;
+}
+a{color:var(--accent-text)}
+:focus-visible{outline-offset:3px}
+
+/* ---- 3. remove flat-design separators -------------------------------- */
+.hero{border-bottom:0}
+.hero::before{content:none}
+main > section + section{border-top:0}
+.contact{background:transparent}
+footer{border-top:0;padding:8px 0 40px}
+footer .wrap{color:var(--ink-2)}
+section{padding:60px 0}
+
+/* ---- 4. sticky header: semi-opaque, NO blur -------------------------- */
+.site-head{background:var(--head-bg);-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid rgba(31,41,55,.12)}
+.nav-links a{display:flex;align-items:center;min-height:44px}
+.mobile-menu{background:#F8FAFD;border-top:1px solid rgba(31,41,55,.12)}
+.mobile-menu a.row{border-bottom:1px solid rgba(31,41,55,.12)}
+.mobile-menu a.row:last-child{border-bottom:0}
+.icon-btn{border-radius:12px;border-color:var(--edge);background:#fff}
+
+/* ---- 5. buttons & controls ------------------------------------------- */
+.btn{border-radius:14px}
+.btn-primary{border-color:var(--accent);box-shadow:0 8px 20px -8px rgba(29,95,224,.55),inset 0 1px 0 rgba(255,255,255,.22)}
+.btn-primary:hover{border-color:var(--accent-hover)}
+.btn-secondary{background:var(--ctl-bg);border-color:var(--edge);box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.btn-secondary:hover{background:#fff;border-color:var(--edge);color:var(--accent-text)}
+.btn-secondary:active{background:#EEF2F8}
+
+/* ---- 6. glass surfaces ----------------------------------------------- */
+/* 6a. glass look, NO blur: hero panel + project cards */
+.hero .wrap > div:first-child,
+.proj{background:var(--glass-strong);border:1px solid var(--edge);box-shadow:var(--glass-hi),var(--glass-shadow)}
+/* 6b. glass WITH blur: exactly 4 cert cards + 1 contact card */
+.cert,.cert.micro,
+.contact-card{background:var(--glass-bg);border:1px solid var(--edge);box-shadow:var(--glass-hi),var(--glass-shadow);
+  -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+.cert.micro{border-style:dashed}
+/* fallbacks */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .cert,.cert.micro,.contact-card{background:#F8FAFD}
+}
+@media (prefers-reduced-transparency:reduce){
+  .hero .wrap > div:first-child,.proj,.cert,.cert.micro,.contact-card{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .btn-secondary,.copyrow,.soc-link,.tags li,.badge,.kind,.code{background:#fff}
+  .site-head{background:#F8FAFD}
+}
+
+/* ---- 7. hero ---------------------------------------------------------- */
+.hero .wrap{padding-top:56px;padding-bottom:28px}
+.hero .wrap > div:first-child{border-radius:28px;padding:52px 56px}
+.pill{background:rgba(236,253,243,.85);border-color:#9fd9b6}
+
+/* ---- 8. certifications ------------------------------------------------ */
+.cert{border-radius:20px}
+.code{border-radius:12px;background:rgba(238,243,253,.9);border:1px solid rgba(29,95,224,.22);color:var(--accent-text)}
+.cert.micro .code{background:rgba(255,255,255,.6);border:1px dashed var(--edge);color:var(--muted)}
+.kind{border-radius:999px;background:rgba(255,255,255,.6);border-color:var(--hairline)}
+.cert.micro .kind{border:1px dashed var(--edge);color:var(--muted)}
+.cert .foot{border-top:1px solid var(--hairline)}
+.cert.micro .foot{border-top:1px dashed var(--hairline)}
+.verify{color:var(--accent-text);border-radius:8px}
+
+/* ---- 9. experience: deliberately NOT glass, flat on the background --- */
+.employer{border:0;border-top:1px solid rgba(31,41,55,.18);border-bottom:1px solid rgba(31,41,55,.18);border-radius:0;overflow:visible}
+.emp-head{background:transparent;border-bottom:1px solid var(--hairline);padding:24px 4px}
+.emp-logo,.track .ico{border-radius:12px;background:rgba(255,255,255,.75);border:1px solid rgba(29,95,224,.22)}
+.period{color:var(--accent-text);background:rgba(238,243,253,.9);border:1px solid rgba(29,95,224,.22);border-radius:999px}
+.track{padding:24px 4px}
+.track + .track{border-left:1px solid var(--hairline);padding-left:28px}
+
+/* ---- 10. projects ------------------------------------------------------ */
+.proj{border-radius:20px}
+.badge{border-radius:999px;background:rgba(255,255,255,.7);border-color:var(--hairline)}
+.tags li{border-radius:999px;background:rgba(255,255,255,.7);border-color:var(--hairline)}
+.proj.wide dl > div{border-top:2px solid var(--hairline)}
+.proj figure{margin:18px 18px 18px 0;border-radius:16px;background:rgba(255,255,255,.55);border:1px solid var(--hairline);padding:26px 26px 18px}
+
+/* ---- 11. contact -------------------------------------------------------- */
+.contact-card{border-radius:24px}
+.copyrow{border-color:var(--edge);border-radius:14px;background:rgba(255,255,255,.82)}
+.copy-btn{border-left:1px solid var(--edge);background:rgba(241,244,249,.9)}
+.copy-btn:hover{background:#fff}
+.soc-link{border-color:var(--edge);border-radius:14px;background:var(--ctl-bg)}
+a.soc-link:hover{background:#fff;border-color:var(--edge);color:var(--accent-text)}
+
+/* ---- 12. breakpoints (restate anything global.css sets in its own media
+         queries, because this file loads later and would otherwise win) -- */
+@media (max-width:1023.98px){
+  .proj figure{order:-1;margin:16px 16px 0;border:1px solid var(--hairline)}
+}
+@media (max-width:767.98px){
+  .wrap{padding:0 14px}
+  .mobile-menu{padding:0 14px 14px}
+  .hero .wrap,.hero.has-photo .wrap{padding:18px 14px 4px}
+  .hero .wrap > div:first-child{padding:28px 15px;border-radius:22px}
+  .hero-cert-line{font-size:13px}
+  section{padding:48px 0}
+  .cert,.proj{border-radius:18px}
+  .emp-head{padding:20px 0}
+  .track{padding:20px 0}
+  .track + .track{border-left:0;border-top:1px solid var(--hairline);padding-left:0}
+  .proj figure{padding:16px 12px 12px}
+  .contact-card{grid-template-columns:minmax(0,1fr);padding:26px 16px;border-radius:18px}
+  .copyrow output{padding:0 6px 0 12px;min-width:0}
+  .copy-btn{width:88px;flex-basis:88px;padding:0 10px}
+}
+/* v1.4.2 cert-line rule is kept in global.css (block per cert, .sep hidden).
+   Only the size and the hero panel side padding change below 360 px. */
+@media (max-width:359.98px){
+  .hero .hero-cert-line{font-size:12px}
+  .hero .wrap > div:first-child{padding-left:12px;padding-right:12px}
+}
+/* prefers-reduced-motion: global.css already disables all transitions and
+   animations; this layer adds none (no animated blobs). Restated for safety. */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
